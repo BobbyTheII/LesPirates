@@ -12,6 +12,10 @@ public enum Pirate {
 		this.chaine = chaine;
 		this.couleur = couleur;
 	}
+	
+	public String getNom() {
+		return chaine;
+	}
 
 	@Override
 	public String toString() {

@@ -5,9 +5,11 @@ import java.util.Random;
 
 public class De {
 	private int resultat;
+	private int face;
 	private Random random;
 	
-	public De() {
+	public De(int face) {
+		this.face = face;
 		try {
 			 random = SecureRandom.getInstanceStrong();
 		}catch (Exception e) {
@@ -20,6 +22,6 @@ public class De {
 	}
 	
 	public void lancer() {
-		resultat = random.nextInt(6)+1;
+		resultat = random.nextInt(face)+1;
 	}
 }

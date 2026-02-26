@@ -1,6 +1,7 @@
 package jeu;
 
 import java.util.Scanner;
+import cases.*;
 
 public class Jeu {
 	private int nbJoueurs;
@@ -35,12 +36,34 @@ public class Jeu {
 		return fini;
 	}
 	
+	public boolean sontATerre() {
+		return joueurs[0].getPion().estATerre() || joueurs[1].getPion().estATerre();
+	}
+	
+	public int choisirPirate(IAffichage affichage) {
+		int choix = -1;
+		for(int i = 0;i<pions.length;i++) {
+			if(pions[i].getJoueur()==null) {
+				affichage.afficherPirate(i+1,pions[i].getPirate().toString());
+			}
+			else {
+				choix = i+1;
+			}
+		}
+		return choix;
+	}
+	
 	public void demarrerJeu(IAffichage affichage) {
 		boolean joueurOK = true;
+		Scanner sc = new Scanner(System.in);
 		for(int i = 0;i<2 && joueurOK;i++) {
-			String nom = affichage.choisirNom("joueur"+(i+1));
-			int choix = affichage.choisirPirate(pions);
-			if(choix<0) {
+			affichage.choisirNom("joueur"+(i+1));
+			String nom = sc.nextLine();
+			int choixImpossible = choisirPirate(affichage);
+			affichage.choisirPirate();
+			int choix = sc.nextInt();
+			sc.nextLine();
+			if(choix>6 || choix<=choixImpossible) {
 				affichage.afficherErreur();
 				joueurOK = false;
 			}
@@ -48,20 +71,32 @@ public class Jeu {
 				creerJoueur(nom,pions[choix-1]);
 			}
 		}
-		int joueurActuel = 0;
-		boolean joueurKO = false;
-		boolean jeuFini = false;
-		Scanner sc = new Scanner(System.in);
-		while(!joueurKO && !jeuFini) {
-			int caseA = donnerCaseActuelle(joueurs[joueurActuel]);
-			affichage.afficherContexteCase(caseA,joueurs[joueurActuel]);
-			sc.next();
-			int deplacement = plateau.lancerDes(affichage);
-			joueurs[joueurActuel].deplacerPion(deplacement);
-			affichage.decrireContexteCase(joueurs[joueurActuel].getPion().getCase());
-			joueurActuel = (joueurActuel + 1)%2;
-			jeuFini = estFini();
-			joueurKO = joueurs[0].getPion().estATerre() || joueurs[1].getPion().estATerre();
+		if(joueurOK) {
+			int joueurActuel = 0;
+			boolean joueurKO = false;
+			boolean jeuFini = false;
+			while(!joueurKO && !jeuFini) {
+				Joueur joueur = joueurs[joueurActuel];
+				int caseA = donnerCaseActuelle(joueur);
+				affichage.afficherCase(caseA,joueur.getNom(),joueur.getPion().getVie());
+				sc.next();
+				int sommeDes = joueur.lancerDes(affichage,plateau.getDe1(),plateau.getDe2());
+				joueur.deplacerPion(sommeDes);
+				caseA = donnerCaseActuelle(joueur);
+				String pirate = joueur.getPion().getPirate().getNom();
+				affichage.decrireContexteCase(pirate,caseA, plateau.getCase(caseA).toString());
+				plateau.getCase(caseA).appliquerEffet(affichage,joueurs[0],joueurs[1],plateau.getDe1());
+				joueurActuel = (joueurActuel + 1)%2;
+				jeuFini = estFini();
+				joueurKO = sontATerre();
+			}
+			if(joueurs[0].getPion().estATerre()||donnerCaseActuelle(joueurs[1])==30) {
+				affichage.afficherFinJeu(joueurs[1].getNom());
+			}
+			else {
+				affichage.afficherFinJeu(joueurs[0].getNom());
+			}
+			sc.close();
 		}
 	}
 	
