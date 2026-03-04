@@ -14,21 +14,28 @@ public class Test_Fonctionnel {
 		CaseBombe caseB1 = new CaseBombe(2);
 		CaseBombe caseB2 = new CaseBombe(19);
 		CaseVolcan caseV1 = new CaseVolcan(16);
+		CaseVolcan caseV2 = new CaseVolcan(24);
 		CaseSoin caseS2 = new CaseSoin(21);
 		CaseSoin caseS1 = new CaseSoin(28);
 		CaseCirce caseC1 = new CaseCirce(20);
+		CaseCirce caseC2 = new CaseCirce(6);
 		CaseTresor caseT1 = new CaseTresor(5);
+		CaseTresor caseT2 = new CaseTresor(25);
 		
-		plateau.ajouterCaseSpeciale(caseTornade, 13);
-		plateau.ajouterCaseSpeciale(caseTornade, 22);
-		plateau.ajouterCaseSpeciale(caseDuel, 10);
-		plateau.ajouterCaseSpeciale(caseDuel, 27);
 		plateau.ajouterCaseSpeciale(caseB1, 2);
 		plateau.ajouterCaseSpeciale(caseT1, 5);
+		plateau.ajouterCaseSpeciale(caseC2, 6);
+		plateau.ajouterCaseSpeciale(caseTornade, 8);
+		plateau.ajouterCaseSpeciale(caseDuel, 10);
+		plateau.ajouterCaseSpeciale(caseTornade, 13);
 		plateau.ajouterCaseSpeciale(caseV1, 16);
 		plateau.ajouterCaseSpeciale(caseB2, 19);
 		plateau.ajouterCaseSpeciale(caseC1, 20);
 		plateau.ajouterCaseSpeciale(caseS2, 21);
+		plateau.ajouterCaseSpeciale(caseTornade, 22);
+		plateau.ajouterCaseSpeciale(caseV2, 24);
+		plateau.ajouterCaseSpeciale(caseT2, 25);
+		plateau.ajouterCaseSpeciale(caseDuel, 27);
 		plateau.ajouterCaseSpeciale(caseS1,28);
 		
 		IAffichage affichage = new AffichageJeu();

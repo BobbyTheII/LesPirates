@@ -63,7 +63,7 @@ public class Jeu {
 			affichage.choisirPirate();
 			int choix = sc.nextInt();
 			sc.nextLine();
-			if(choix>6 || choix<=choixImpossible) {
+			if(choix>5 || choix==choixImpossible || choix <= 0) {
 				affichage.afficherErreur();
 				joueurOK = false;
 			}
@@ -81,7 +81,7 @@ public class Jeu {
 				affichage.afficherCase(caseA,joueur.getNom(),joueur.getPion().getVie());
 				sc.next();
 				int sommeDes = joueur.lancerDes(affichage,plateau.getDe1(),plateau.getDe2());
-				joueur.deplacerPion(sommeDes);
+				joueur.deplacerPion(sommeDes,affichage);
 				caseA = donnerCaseActuelle(joueur);
 				String pirate = joueur.getPion().getPirate().getNom();
 				affichage.decrireContexteCase(pirate,caseA, plateau.getCase(caseA).toString());
@@ -90,11 +90,25 @@ public class Jeu {
 				jeuFini = estFini();
 				joueurKO = sontATerre();
 			}
-			if(joueurs[0].getPion().estATerre()||donnerCaseActuelle(joueurs[1])==30) {
-				affichage.afficherFinJeu(joueurs[1].getNom());
+			if(joueurKO) {
+				if(joueurs[0].getPion().estATerre()) {
+					affichage.afficherMort(joueurs[0].getPion().getPirate().getNom());
+					affichage.afficherFinJeu(joueurs[1].getNom());
+				}
+				else {
+					affichage.afficherMort(joueurs[1].getPion().getPirate().getNom());
+					affichage.afficherFinJeu(joueurs[0].getNom());
+				}
 			}
-			else {
-				affichage.afficherFinJeu(joueurs[0].getNom());
+			else{
+				if(donnerCaseActuelle(joueurs[0])==30) {
+					affichage.afficherPirateArrive(joueurs[0].getPion().getPirate().getNom());
+					affichage.afficherFinJeu(joueurs[0].getNom());
+				}
+				else {
+					affichage.afficherPirateArrive(joueurs[1].getPion().getPirate().getNom());
+					affichage.afficherFinJeu(joueurs[1].getNom());
+				}
 			}
 			sc.close();
 		}

@@ -23,11 +23,12 @@ public class Joueur {
 		this.effet = effet;
 	}
 	
-	public void deplacerPion(int deplacement) {
+	public void deplacerPion(int deplacement,IAffichage affichage) {
 		int caseActuelle = pion.getCase();
 		int caseFin = caseActuelle + deplacement;
 		if(caseFin>30) {
 			caseFin = 30 - (caseFin - 30);
+			affichage.afficherRecule(pion.getPirate().getNom());
 		}
 		pion.setCase(caseFin);
 	}

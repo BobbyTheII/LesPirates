@@ -10,6 +10,7 @@ public class CaseTresor extends CaseSpeciale{
 		super(numero);
 	}
 	
+	@Override
 	public void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de) {
 		if(joueur1.getPion().getCase() == numero) {
 			joueur1.setEffet('T');
@@ -21,8 +22,8 @@ public class CaseTresor extends CaseSpeciale{
 	
 	@Override
 	public String toString() {
-		return "NON D'UNE CREVETTE ! un trésor se trouvait ici "
-				+ "et personne de l'avait remarqué : +2 au prochain lancé";
+		return "Case Trésor 💰 : NON D'UNE CREVETTE ! un trésor se trouvait ici \n"
+				+ "et personne ne l'avait remarqué : +2 au prochain lancé";
 	}
 
 }

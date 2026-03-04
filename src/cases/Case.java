@@ -15,6 +15,9 @@ public class Case extends CaseSpeciale{
 	
 	@Override
 	public String toString() {
+		if (numero == 30) {
+			return "Dernière case du plateau, vous avez gagné !"; 
+		}
 		return "Sur cette case rien ne se passe...";
 	}
 }

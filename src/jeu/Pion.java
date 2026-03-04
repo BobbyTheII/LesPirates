@@ -39,8 +39,13 @@ public class Pion {
 	}
 	
 	public void changerVie(int vie) {
-		if (nbrVie + vie < 6) {
-			nbrVie += vie;
+		int newVie = nbrVie + vie;
+		if (newVie < 0) {
+			newVie = 0;
 		}
+		else if(newVie > 5) {
+			newVie = 5;
+		}
+		nbrVie = newVie;
 	}
 }

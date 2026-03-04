@@ -21,17 +21,19 @@ public class CaseDuel extends CaseSpeciale{
 		if(lance1 > lance2) {
 			joueur1.getPion().changerVie(1);
 			joueur2.getPion().changerVie(-1);
+			affichage.afficherCaseDuel(joueur2.getPion().getPirate().getNom());
 		}
 		else if(lance1 < lance2) {
 			joueur2.getPion().changerVie(1);
 			joueur1.getPion().changerVie(-1);
+			affichage.afficherCaseDuel(joueur1.getPion().getPirate().getNom());
 		}
 	}
 	
 	@Override
 	public String toString() {
-		return "Les deux pirates vont devoir s'affronter ! "
-				+ "Le gagnant remportera une vie de son adversaire.";
+		return "Case Duel ⚔ : Les deux pirates vont devoir s'affronter ! \n"
+				+ "Le gagnant remporte une vie de son adversaire.";
 	}
 
 }

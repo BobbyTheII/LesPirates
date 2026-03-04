@@ -21,7 +21,7 @@ public class CaseCirce extends CaseSpeciale{
 	
 	@Override
 	public String toString() {
-		return "Circé était sur cette île, le pirate a été trasnformé en cochon : "
-				+ "le prochain lancé est diviser par deux";
+		return "Case Circé 🐷 : Circé était sur cette île, \nle pirate a été transformé en cochon : \n"
+				+ "le prochain lancé est divisé par deux";
 	}
 }

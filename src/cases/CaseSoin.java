@@ -10,6 +10,7 @@ public class CaseSoin extends CaseSpeciale{
 		super(numero);
 	}
 	
+	@Override
 	public void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de) {
 		if(joueur1.getPion().getCase() == numero) {
 			joueur1.getPion().changerVie(1);
@@ -21,6 +22,7 @@ public class CaseSoin extends CaseSpeciale{
 	
 	@Override
 	public String toString() {
-		return "Sur cette case rien ne se passe...";
+		return "Case Soin 💊 : SACREBLEU !Le pirate aperçoit \nun kit de premier secours echoué près de lui.\n"
+				+ "Il regagne une vie";
 	}
 }

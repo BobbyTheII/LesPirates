@@ -13,4 +13,8 @@ public interface IAffichage {
 	void afficherResultatDe(int de);
 	void afficherCoeur(int nbrVie);
 	void afficherFinJeu(String joueur);
+	void afficherCaseDuel(String pirate);
+	void afficherMort(String pirate);
+	void afficherRecule(String pirate);
+	void afficherPirateArrive(String pirate);
 }

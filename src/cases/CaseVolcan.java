@@ -10,7 +10,7 @@ public class CaseVolcan extends CaseSpeciale{
 		super(numero);
 	}
 	
-	@Override //je suis pas sure
+	@Override 
 	public void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de) {
 		if(joueur1.getPion().getCase()==numero) {
 			joueur1.allerA(joueur1.getPion().getCase()-5);
@@ -22,6 +22,7 @@ public class CaseVolcan extends CaseSpeciale{
 	
 	@Override
 	public String toString() {
-		return "Le volcan entre en éruption";
+		return "Case Volcan 🌋 : Le volcan entre en éruption ! \n"
+				+ "Le pirate bat en retraite et recule de 5 cases";
 	}
 }

@@ -10,6 +10,7 @@ public class CaseBombe extends CaseSpeciale{
 		super(numero);
 	}
 	
+	@Override
 	public void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de) {
 		if(joueur1.getPion().getCase() == numero) {
 			joueur1.getPion().changerVie(-1);
@@ -21,7 +22,8 @@ public class CaseBombe extends CaseSpeciale{
 	
 	@Override
 	public String toString() {
-		return "OH NON ! Le pirate se prend une bombe dans la gueule, "
-				+ "il perds une vie";
+		return "Case Bombe 💣 : Tonnerre de Brest ! La derniere chose que le pirate \nvu avant de s'évanouir "
+				+ "aura été un obus \nlancé a toute vitesse en sa direction.\n"
+				+ "Il perd une vie.";
 	}
 }
