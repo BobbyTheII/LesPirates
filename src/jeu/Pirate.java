@@ -1,9 +1,10 @@
 package jeu;
 
 public enum Pirate {
-	CAPITAINE_CROCHET("Capitaine Crochet","rouge"),LUFFY("Luffy","jaune")
-	,JACK_SPARROW("Jack Sparrow","bleu"),FLAMEHEART("Flameheart","rose"),
-	VICTOR_MACBERNIK("Victor Macbernik","vert");
+	CAPITAINE_CROCHET("Capitaine Crochet","violet"),LUFFY("Luffy","jaune")
+	,JACK_SPARROW("Jack Sparrow","marron"),FLAMEHEART("Flameheart","rose"),
+	VICTOR_MACBERNIK("Victor Macbernik","vert"), JACK_LE_BORGNE("Jack Le Borgne","rouge"),
+	BILL_JAMBE_DE_BOIS("Bill Jambe De Bois","bleu");
 	
 	private String chaine;
 	private String couleur;

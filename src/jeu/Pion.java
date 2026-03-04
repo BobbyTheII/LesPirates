@@ -14,8 +14,8 @@ public class Pion {
 		return caseActuelle;
 	}
 	
-	public void setCase(int nouvelCase) {
-		caseActuelle = nouvelCase;
+	public void setCase(int nouvelleCase) {
+		caseActuelle = nouvelleCase;
 	}
 	
 	public void setJoueur(Joueur joueur) {

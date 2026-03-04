@@ -5,7 +5,7 @@ import cases.*;
 
 public class Jeu {
 	private int nbJoueurs;
-	private Pion[] pions = new Pion[5];
+	private Pion[] pions = new Pion[7];
 	private Joueur[] joueurs = new Joueur[2];
 	private PlateauJeu plateau;
 	
@@ -17,6 +17,8 @@ public class Jeu {
 		pions[2] = new Pion(Pirate.JACK_SPARROW);
 		pions[3] = new Pion(Pirate.LUFFY);
 		pions[4] = new Pion(Pirate.VICTOR_MACBERNIK);
+		pions[5] = new Pion(Pirate.JACK_LE_BORGNE);
+		pions[6] = new Pion(Pirate.BILL_JAMBE_DE_BOIS);
 	}
 	
 	public void creerJoueur(String nom, Pion pion) {
@@ -63,7 +65,7 @@ public class Jeu {
 			affichage.choisirPirate();
 			int choix = sc.nextInt();
 			sc.nextLine();
-			if(choix>5 || choix==choixImpossible || choix <= 0) {
+			if(choix>pions.length || choix==choixImpossible || choix <= 0) {
 				affichage.afficherErreur();
 				joueurOK = false;
 			}
