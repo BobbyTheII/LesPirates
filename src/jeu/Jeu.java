@@ -1,7 +1,6 @@
 package jeu;
 
 import java.util.Scanner;
-import cases.*;
 
 public class Jeu {
 	private int nbJoueurs;
@@ -31,11 +30,7 @@ public class Jeu {
 	}
 	
 	public boolean estFini() {
-		boolean fini = false;
-		if((donnerCaseActuelle(joueurs[0])==30)||(donnerCaseActuelle(joueurs[1])==30)) {
-			fini = true;
-		}
-		return fini;
+		return(donnerCaseActuelle(joueurs[0])==30)||(donnerCaseActuelle(joueurs[1])==30);
 	}
 	
 	public boolean sontATerre() {
@@ -55,6 +50,29 @@ public class Jeu {
 		return choix;
 	}
 	
+	private void trouverGagnant(boolean joueurKO,IAffichage affichage) {
+		if(joueurKO) {
+			if(joueurs[0].getPion().estATerre()) {
+				affichage.afficherMort(joueurs[0].getPion().getPirate().getNom());
+				affichage.afficherFinJeu(joueurs[1].getNom());
+			}
+			else {
+				affichage.afficherMort(joueurs[1].getPion().getPirate().getNom());
+				affichage.afficherFinJeu(joueurs[0].getNom());
+			}
+		}
+		else{
+			if(donnerCaseActuelle(joueurs[0])==30) {
+				affichage.afficherPirateArrive(joueurs[0].getPion().getPirate().getNom());
+				affichage.afficherFinJeu(joueurs[0].getNom());
+			}
+			else {
+				affichage.afficherPirateArrive(joueurs[1].getPion().getPirate().getNom());
+				affichage.afficherFinJeu(joueurs[1].getNom());
+			}
+		}
+	}
+	
 	public void demarrerJeu(IAffichage affichage) {
 		boolean joueurOK = true;
 		Scanner sc = new Scanner(System.in);
@@ -71,19 +89,20 @@ public class Jeu {
 			}
 			else {
 				creerJoueur(nom,pions[choix-1]);
+				affichage.afficherCreationJoueur(nom,pions[choix-1].getPirate().toString());
 			}
 		}
 		if(joueurOK) {
 			int joueurActuel = 0;
 			boolean joueurKO = false;
 			boolean jeuFini = false;
-			while(!joueurKO && !jeuFini) {
+			do {
 				Joueur joueur = joueurs[joueurActuel];
 				int caseA = donnerCaseActuelle(joueur);
-				affichage.afficherCase(caseA,joueur.getNom(),joueur.getPion().getVie());
+				affichage.debuterAction(caseA,joueur.getNom(),joueur.getPion().getVie());
 				sc.next();
 				int sommeDes = joueur.lancerDes(affichage,plateau.getDe1(),plateau.getDe2());
-				joueur.deplacerPion(sommeDes,affichage);
+				joueur.avancerPion(sommeDes,affichage);
 				caseA = donnerCaseActuelle(joueur);
 				String pirate = joueur.getPion().getPirate().getNom();
 				affichage.decrireContexteCase(pirate,caseA, plateau.getCase(caseA).toString());
@@ -91,27 +110,8 @@ public class Jeu {
 				joueurActuel = (joueurActuel + 1)%2;
 				jeuFini = estFini();
 				joueurKO = sontATerre();
-			}
-			if(joueurKO) {
-				if(joueurs[0].getPion().estATerre()) {
-					affichage.afficherMort(joueurs[0].getPion().getPirate().getNom());
-					affichage.afficherFinJeu(joueurs[1].getNom());
-				}
-				else {
-					affichage.afficherMort(joueurs[1].getPion().getPirate().getNom());
-					affichage.afficherFinJeu(joueurs[0].getNom());
-				}
-			}
-			else{
-				if(donnerCaseActuelle(joueurs[0])==30) {
-					affichage.afficherPirateArrive(joueurs[0].getPion().getPirate().getNom());
-					affichage.afficherFinJeu(joueurs[0].getNom());
-				}
-				else {
-					affichage.afficherPirateArrive(joueurs[1].getPion().getPirate().getNom());
-					affichage.afficherFinJeu(joueurs[1].getNom());
-				}
-			}
+			}while(!joueurKO && !jeuFini);
+			trouverGagnant(joueurKO,affichage);
 			sc.close();
 		}
 	}

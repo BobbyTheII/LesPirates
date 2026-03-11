@@ -21,7 +21,7 @@ public class CaseTornade extends CaseSpeciale{
 	@Override
 	public String toString() {
 		return "Case Tornade 🌪️ : Une tornade apparait soudainement sur l'île.\n"
-				+ "Les deux pirates, emportés par le vent \nse retrouvent respectivement "
+				+ "Les deux pirates, emportés par le vent, \nse retrouvent respectivement "
 				+ "sur la case de son adversaire !";
 	}
 }

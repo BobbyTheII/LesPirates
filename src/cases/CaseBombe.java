@@ -23,7 +23,7 @@ public class CaseBombe extends CaseSpeciale{
 	@Override
 	public String toString() {
 		return "Case Bombe 💣 : Tonnerre de Brest ! La derniere chose que le pirate \nvu avant de s'évanouir "
-				+ "aura été un obus \nlancé a toute vitesse en sa direction.\n"
+				+ "aura été une bombe explosé à 5m de lui.\n"
 				+ "Il perd une vie.";
 	}
 }

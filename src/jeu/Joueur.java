@@ -23,7 +23,7 @@ public class Joueur {
 		this.effet = effet;
 	}
 	
-	public void deplacerPion(int deplacement,IAffichage affichage) {
+	public void avancerPion(int deplacement,IAffichage affichage) {
 		int caseActuelle = pion.getCase();
 		int caseFin = caseActuelle + deplacement;
 		if(caseFin>30) {
@@ -33,9 +33,9 @@ public class Joueur {
 		pion.setCase(caseFin);
 	}
 	
-	public void allerA(int deplacement) {
-		if ((0<=deplacement)&&(deplacement<=30)) {
-			pion.setCase(deplacement);
+	public void allerA(int caseN) {
+		if ((0<=caseN)&&(caseN<=30)) {
+			pion.setCase(caseN);
 		}
 	}
 	
