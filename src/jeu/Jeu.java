@@ -106,7 +106,7 @@ public class Jeu {
 				caseA = donnerCaseActuelle(joueur);
 				String pirate = joueur.getPion().getPirate().getNom();
 				affichage.decrireContexteCase(pirate,caseA);
-				plateau.getCase(caseA).appliquerEffet(affichage,joueurs[0],joueurs[1],plateau.getDe1());
+				plateau.getCase(caseA).appliquerEffet(affichage,joueurs[0],joueurs[1],plateau.getDe1(),sc);
 				joueurActuel = (joueurActuel + 1)%2;
 				jeuFini = estFini();
 				joueurKO = sontATerre();

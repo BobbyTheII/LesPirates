@@ -46,14 +46,14 @@ public class AffichageJeu implements IAffichage{
 		afficherJoueur(joueur);
 		afficherCoeur(nbrVie);
 		afficherEffetActuel(effet);
-		System.out.println("\nCase Actuelle : "+caseA+"\n"
+		System.out.println("\nCase Actuelle : [ "+caseA+" ]\n"
 				+joueur+" lance les dés !");
 	}
 	
 	public void afficherResultatDes(int de1,int de2) {
 		System.out.println("     🎲🎲 DES 🎲🎲\nResultat du premier dé : "+de1+
 				"\nResultat du deuxieme dé : "+de2+
-				"\nPour un total de "+(de1+de2));
+				"\nPour un total de "+"( "+(de1+de2)+" ).");
 	}
 	
 	public void afficherEffet(int effet,int resultat) {
@@ -64,9 +64,9 @@ public class AffichageJeu implements IAffichage{
 		}
 		else if(effet == 'T') {
 			System.out.println("Grâce a sa découverte précédente, "
-					+ "le pirate avance de deux cases de plus");
+					+ "le pirate avance de deux cases de plus.");
 		}
-		System.out.println("Valeur réel des dés : "+resultat);
+		System.out.println("Valeur réel des dés : ( "+resultat+" ).");
 	}
 	
 	public void afficherRecule(String pirate) {
@@ -75,16 +75,20 @@ public class AffichageJeu implements IAffichage{
 	
 	public void decrireContexteCase(String pirate,int caseA) {
 		System.out.println("\n   -🎴-CASE FINAL-🎴-\nLe pirate "+pirate +
-				" arrive à la case numero :"+caseA);
-		System.out.print("Déscription de la case : ");
+				" arrive sur la case numero : [ "+caseA+" ] .");
+		System.out.print("{ Déscription de la case } : ");
 	}	
 	
 	public void afficherJoueur(String joueur) {
-		System.out.println("Au tour du joueur "+joueur);
+		System.out.println("Au tour du joueur "+joueur+" :");
 	}
 		
 	public void afficherResultatDe(int de) {
-		System.out.println("     -🎲 DE 🎲-\nResultat du dé : "+de);
+		System.out.println("Resultat du dé : "+de);
+	}
+	
+	public void afficherPoisition(int numeroCase,String pirate) {
+		System.out.println("Le pirate "+pirate+" est maintenant sur la case : [ "+numeroCase+" ] .");
 	}
 	
 	public void afficherCaseDuelResultat(String pirate) {
@@ -94,8 +98,8 @@ public class AffichageJeu implements IAffichage{
 	
 	public void afficherMort(String pirate) {
 		System.out.println("Malgré sa détermination, le pirate "+pirate+
-				" ne verra plus jamais \nla lumiere du jour...\n"
-				+ "Il se sera bien battue. Cette île ne l'oubliera pas.");
+				" ne verra plus jamais la lumiere du jour...\n"
+				+ "Cette île sera son tombeau.");
 		System.out.println(pirate+" : \" J-je me vengerai.... \" \n");
 	}
 	
@@ -107,28 +111,28 @@ public class AffichageJeu implements IAffichage{
 	public void afficherPirateArrive(String pirate) {
 		System.out.println("Le pirate "+pirate+" est arrivé à destination!\n"
 				+ "De grandes aventures l'attendent !");
-		System.out.println(pirate+" : \" il(e) était temps ! \"");
+		System.out.println(pirate+" : \" Îl(e) était temps ! \"");
 	}
 	
 	public void afficherCaseBombe() {
-		System.out.println("Case Bombe 💣 : Tonnerre de Brest ! La derniere chose que le pirate \nvu avant de s'évanouir\n"
-				+ "aura été une bombe exploser à 5m de lui.\n"
+		System.out.println("Case Bombe 💣 : Tonnerre de Brest ! Une bombe explose à 5m du pirate.\n"
 				+ "Il perd une vie.");
 	}
 	
 	public void afficherCaseCirce() {
 		System.out.println("Case Circé 🐷 : Circé était sur cette île, \nle pirate a été transformé en cochon : \n"
-				+ "le prochain lancé est divisé par deux");
+				+ "le prochain lancé est divisé par deux.");
 	}
 	
 	public void afficherCaseDuel() {
 		System.out.println("Case Duel ⚔ : Les deux pirates vont devoir s'affronter ! \n"
 				+ "Le gagnant remporte une vie de son adversaire.");
+		System.out.println("     -🎲 DE 🎲-");
 	}
 	
 	public void afficherCaseSoin() {
 		System.out.println("Case Soin 💊 : SACREBLEU !Le pirate aperçoit un kit de premier secours, echoué près de lui.\n"
-				+ "Il regagne une vie");
+				+ "Il regagne une vie.");
 	}
 	
 	public void afficherCaseTornade() {
@@ -139,12 +143,12 @@ public class AffichageJeu implements IAffichage{
 	
 	public void afficherCaseTresor() {
 		System.out.println("Case Trésor 💰 : NON D'UNE CREVETTE ! un trésor se trouvait ici "
-				+ "et personne ne l'avait remarqué : \n+2 au prochain lancé");
+				+ "et personne ne l'avait remarqué : \n+2 au prochain lancé.");
 	}
 	
 	public void afficherCaseVolcan() {
 		System.out.println("Case Volcan 🌋 : Le volcan entre en éruption ! \n"
-				+ "Le pirate bat en retraite et recule de 5 cases");
+				+ "Le pirate bat en retraite et recule de 5 cases.");
 	}
 	
 	public void afficherCase(int numero) {

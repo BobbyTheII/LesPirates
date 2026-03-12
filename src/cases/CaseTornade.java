@@ -1,5 +1,6 @@
 package cases;
 
+import java.util.Scanner;
 import jeu.De;
 import jeu.IAffichage;
 import jeu.Joueur;
@@ -11,7 +12,7 @@ public class CaseTornade extends CaseSpeciale{
 	}
 
 	@Override
-	public void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de) {
+	public void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de,Scanner sc) {
 		affichage.afficherCaseTornade();
 		int case1 = joueur1.getPion().getCase();
 		int case2 = joueur2.getPion().getCase();

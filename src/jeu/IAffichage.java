@@ -15,6 +15,7 @@ public interface IAffichage {
 	void decrireContexteCase(String pirate,int caseA);
 	void afficherJoueur(String joueur) ;
 	void afficherResultatDe(int de);
+	void afficherPoisition(int numeroCase,String pirate);
 	void afficherCaseDuelResultat(String pirate);
 	void afficherMort(String pirate);
 	void afficherFinJeu(String joueur);

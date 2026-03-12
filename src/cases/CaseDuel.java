@@ -1,5 +1,7 @@
 package cases;
 
+import java.util.Scanner;
+
 import jeu.De;
 import jeu.IAffichage;
 import jeu.Joueur;
@@ -11,12 +13,15 @@ public class CaseDuel extends CaseSpeciale{
 	}
 	
 	@Override
-	public void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de) {
+	public void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de,Scanner sc) {
 		affichage.afficherCaseDuel();
 		affichage.afficherJoueur(joueur1.getNom());
+		sc.nextLine();
+		sc.nextLine();
 		joueur1.lancerDe(affichage,de);
 		int lance1 = de.getResultat();
 		affichage.afficherJoueur(joueur2.getNom());
+		sc.nextLine();
 		joueur2.lancerDe(affichage, de);
 		int lance2 = de.getResultat();
 		if(lance1 > lance2) {
