@@ -12,18 +12,12 @@ public class CaseBombe extends CaseSpeciale{
 	
 	@Override
 	public void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de) {
+		affichage.afficherCaseBombe();
 		if(joueur1.getPion().getCase() == numero) {
 			joueur1.getPion().changerVie(-1);
 		}
 		else {
 			joueur2.getPion().changerVie(-1);
 		}
-	}
-	
-	@Override
-	public String toString() {
-		return "Case Bombe 💣 : Tonnerre de Brest ! La derniere chose que le pirate \nvu avant de s'évanouir "
-				+ "aura été une bombe explosé à 5m de lui.\n"
-				+ "Il perd une vie.";
 	}
 }

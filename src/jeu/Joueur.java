@@ -19,6 +19,10 @@ public class Joueur {
 		return nom;
 	}
 	
+	public int getEffet() {
+		return effet;
+	}
+	
 	public void setEffet(int effet) {
 		this.effet = effet;
 	}

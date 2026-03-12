@@ -12,16 +12,10 @@ public class CaseTornade extends CaseSpeciale{
 
 	@Override
 	public void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de) {
+		affichage.afficherCaseTornade();
 		int case1 = joueur1.getPion().getCase();
 		int case2 = joueur2.getPion().getCase();
 		joueur1.allerA(case2);
 		joueur2.allerA(case1);
-	}
-	
-	@Override
-	public String toString() {
-		return "Case Tornade 🌪️ : Une tornade apparait soudainement sur l'île.\n"
-				+ "Les deux pirates, emportés par le vent, \nse retrouvent respectivement "
-				+ "sur la case de son adversaire !";
 	}
 }

@@ -99,13 +99,13 @@ public class Jeu {
 			do {
 				Joueur joueur = joueurs[joueurActuel];
 				int caseA = donnerCaseActuelle(joueur);
-				affichage.debuterAction(caseA,joueur.getNom(),joueur.getPion().getVie());
+				affichage.debuterAction(caseA,joueur.getNom(),joueur.getPion().getVie(),joueur.getEffet());
 				sc.next();
 				int sommeDes = joueur.lancerDes(affichage,plateau.getDe1(),plateau.getDe2());
 				joueur.avancerPion(sommeDes,affichage);
 				caseA = donnerCaseActuelle(joueur);
 				String pirate = joueur.getPion().getPirate().getNom();
-				affichage.decrireContexteCase(pirate,caseA, plateau.getCase(caseA).toString());
+				affichage.decrireContexteCase(pirate,caseA);
 				plateau.getCase(caseA).appliquerEffet(affichage,joueurs[0],joueurs[1],plateau.getDe1());
 				joueurActuel = (joueurActuel + 1)%2;
 				jeuFini = estFini();

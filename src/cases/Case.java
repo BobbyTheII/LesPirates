@@ -11,13 +11,7 @@ public class Case extends CaseSpeciale{
 	}
 	
 	@Override
-	public void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de) {}
-	
-	@Override
-	public String toString() {
-		if (numero == 30) {
-			return "Dernière case du plateau 👑 : vous avez gagné !"; 
-		}
-		return "Sur cette case rien ne se passe...🍂";
+	public void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de) {
+		affichage.afficherCase(numero);
 	}
 }

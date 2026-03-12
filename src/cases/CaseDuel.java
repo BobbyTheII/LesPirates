@@ -12,6 +12,7 @@ public class CaseDuel extends CaseSpeciale{
 	
 	@Override
 	public void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de) {
+		affichage.afficherCaseDuel();
 		affichage.afficherJoueur(joueur1.getNom());
 		joueur1.lancerDe(affichage,de);
 		int lance1 = de.getResultat();
@@ -21,12 +22,12 @@ public class CaseDuel extends CaseSpeciale{
 		if(lance1 > lance2) {
 			joueur1.getPion().changerVie(1);
 			joueur2.getPion().changerVie(-1);
-			affichage.afficherCaseDuel(joueur2.getPion().getPirate().getNom());
+			affichage.afficherCaseDuelResultat(joueur2.getPion().getPirate().getNom());
 		}
 		else if(lance1 < lance2) {
 			joueur2.getPion().changerVie(1);
 			joueur1.getPion().changerVie(-1);
-			affichage.afficherCaseDuel(joueur1.getPion().getPirate().getNom());
+			affichage.afficherCaseDuelResultat(joueur1.getPion().getPirate().getNom());
 		}
 	}
 	

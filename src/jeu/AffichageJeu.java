@@ -16,7 +16,7 @@ public class AffichageJeu implements IAffichage{
 	}
 	
 	public void afficherCreationJoueur(String joueur,String pirate) {
-		System.out.println("\nLe joueur "+joueur+" entre en jeu avec "+pirate+"\n");
+		System.out.println("\nLe joueur "+joueur+" entre en jeu avec "+pirate);
 	}
 	
 	public void afficherErreur() {
@@ -28,13 +28,24 @@ public class AffichageJeu implements IAffichage{
 		for(int i = 0;i<nbrVie;i++) {
 			System.out.print("❤");
 		}
-		System.out.print(" "+nbrVie+"\n");
+		System.out.print(" "+nbrVie);
 	}
 	
-	public void debuterAction(int caseA, String joueur,int nbrVie) {
+	public void afficherEffetActuel(int effet) {
+		if(effet == 'T') {
+			System.out.print(" 💰");
+		}
+		else if(effet == 'C') {
+			System.out.print(" 🐷");
+		}
+		System.out.println();
+	}
+	
+	public void debuterAction(int caseA, String joueur,int nbrVie,int effet) {
 		System.out.println("\n---DEBUT DE L'ACTION---");
 		afficherJoueur(joueur);
 		afficherCoeur(nbrVie);
+		afficherEffetActuel(effet);
 		System.out.println("\nCase Actuelle : "+caseA+"\n"
 				+joueur+" lance les dés !");
 	}
@@ -62,10 +73,10 @@ public class AffichageJeu implements IAffichage{
 		System.out.println(pirate+" : \"SAPRISTI ! Je recule !\"");
 	}
 	
-	public void decrireContexteCase(String pirate,int caseA,String description) {
+	public void decrireContexteCase(String pirate,int caseA) {
 		System.out.println("\n   -🎴-CASE FINAL-🎴-\nLe pirate "+pirate +
 				" arrive à la case numero :"+caseA);
-		System.out.println("Déscription de la case : "+description);
+		System.out.print("Déscription de la case : ");
 	}	
 	
 	public void afficherJoueur(String joueur) {
@@ -76,7 +87,7 @@ public class AffichageJeu implements IAffichage{
 		System.out.println("     -🎲 DE 🎲-\nResultat du dé : "+de);
 	}
 	
-	public void afficherCaseDuel(String pirate) {
+	public void afficherCaseDuelResultat(String pirate) {
 		System.out.println("ARGHH !! le pirate "+pirate+" se prend un grand coup "
 				+ "d'épée.\nIl perd une vie, son adversaire s'en empare aussitôt !");
 	}
@@ -85,15 +96,63 @@ public class AffichageJeu implements IAffichage{
 		System.out.println("Malgré sa détermination, le pirate "+pirate+
 				" ne verra plus jamais \nla lumiere du jour...\n"
 				+ "Il se sera bien battue. Cette île ne l'oubliera pas.");
+		System.out.println(pirate+" : \" J-je me vengerai.... \" \n");
 	}
 	
 	public void afficherFinJeu(String joueur) {
-		System.out.println("Bravo ! le joueur "+joueur+" à gagné !\n"
+		System.out.println("Bravo ! le joueur "+joueur+" a gagné !\n"
 				+ "-------FIN DU JEU------");
 	}
 		
 	public void afficherPirateArrive(String pirate) {
 		System.out.println("Le pirate "+pirate+" est arrivé à destination!\n"
 				+ "De grandes aventures l'attendent !");
+		System.out.println(pirate+" : \" il(e) était temps ! \"");
+	}
+	
+	public void afficherCaseBombe() {
+		System.out.println("Case Bombe 💣 : Tonnerre de Brest ! La derniere chose que le pirate \nvu avant de s'évanouir\n"
+				+ "aura été une bombe exploser à 5m de lui.\n"
+				+ "Il perd une vie.");
+	}
+	
+	public void afficherCaseCirce() {
+		System.out.println("Case Circé 🐷 : Circé était sur cette île, \nle pirate a été transformé en cochon : \n"
+				+ "le prochain lancé est divisé par deux");
+	}
+	
+	public void afficherCaseDuel() {
+		System.out.println("Case Duel ⚔ : Les deux pirates vont devoir s'affronter ! \n"
+				+ "Le gagnant remporte une vie de son adversaire.");
+	}
+	
+	public void afficherCaseSoin() {
+		System.out.println("Case Soin 💊 : SACREBLEU !Le pirate aperçoit un kit de premier secours, echoué près de lui.\n"
+				+ "Il regagne une vie");
+	}
+	
+	public void afficherCaseTornade() {
+		System.out.println("Case Tornade 🌪️ : Une tornade apparait soudainement sur l'île.\n"
+				+ "Les deux pirates, emportés par le vent, \nse retrouvent respectivement "
+				+ "sur la case de son adversaire !");
+	}
+	
+	public void afficherCaseTresor() {
+		System.out.println("Case Trésor 💰 : NON D'UNE CREVETTE ! un trésor se trouvait ici "
+				+ "et personne ne l'avait remarqué : \n+2 au prochain lancé");
+	}
+	
+	public void afficherCaseVolcan() {
+		System.out.println("Case Volcan 🌋 : Le volcan entre en éruption ! \n"
+				+ "Le pirate bat en retraite et recule de 5 cases");
+	}
+	
+	public void afficherCase(int numero) {
+		if (numero == 30) {
+			System.out.println("Dernière case du plateau 👑 : vous avez gagné !"); 
+		}
+		else{
+			System.out.println("Sur cette case rien ne se passe...🍂");
+		}
 	}
 }
