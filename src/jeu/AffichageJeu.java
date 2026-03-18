@@ -1,18 +1,23 @@
 package jeu;
 
-public class AffichageJeu implements IAffichage{
+import java.util.Scanner;
 
-	public void choisirNom(String joueur) {
+public class AffichageJeu implements IAffichage{
+	private Scanner scanner = new Scanner(System.in);
+
+	public String choisirNom(String joueur) {
 		System.out.print("---"+joueur+"---\n"+joueur+
 				", entrez votre nom :");
+		return scanner.nextLine();
 	}
 	
 	public void afficherPirate(int indice,String nom) {
 		System.out.print("\n"+indice+") "+ nom);
 	}
 	
-	public void choisirPirate() {
+	public int choisirPirate() {
 		System.out.print("\nChoississez votre pirate : ");
+		return scanner.nextInt();
 	}
 	
 	public void afficherCreationJoueur(String joueur,String pirate) {
@@ -20,8 +25,8 @@ public class AffichageJeu implements IAffichage{
 	}
 	
 	public void afficherErreur() {
-		System.out.println("\nLe joueur n'a pas pu être créé\n"
-				+ "\n-------STOP------");
+		System.out.println("\nCe pirate n'existe pas ou plus, réesayez\n"
+				+ "\n-------NOUVEL ESSAI------");
 	}
 	
 	public void afficherCoeur(int nbrVie) {
@@ -115,8 +120,8 @@ public class AffichageJeu implements IAffichage{
 	}
 	
 	public void afficherCaseBombe() {
-		System.out.println("Case Bombe 💣 : Tonnerre de Brest ! Une bombe explose à 5m du pirate.\n"
-				+ "Il perd une vie.");
+		System.out.println("Case Bombe 💣 : Tonnerre de Brest ! Une bombe explose à 5m du ou des pirate(s).\n"
+				+ "Une vie est enlevé.");
 	}
 	
 	public void afficherCaseCirce() {
@@ -158,5 +163,9 @@ public class AffichageJeu implements IAffichage{
 		else{
 			System.out.println("Sur cette case rien ne se passe...🍂");
 		}
+	}
+	
+	public void afficherNextLine() {
+		scanner.nextLine();
 	}
 }

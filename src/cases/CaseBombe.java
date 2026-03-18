@@ -1,6 +1,5 @@
 package cases;
 
-import java.util.Scanner;
 import jeu.De;
 import jeu.IAffichage;
 import jeu.Joueur;
@@ -12,12 +11,12 @@ public class CaseBombe extends CaseSpeciale{
 	}
 	
 	@Override
-	public void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de,Scanner sc) {
+	public void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de) {
 		affichage.afficherCaseBombe();
 		if(joueur1.getPion().getCase() == numero) {
 			joueur1.getPion().changerVie(-1);
 		}
-		else {
+		if(joueur2.getPion().getCase() == numero) {
 			joueur2.getPion().changerVie(-1);
 		}
 	}

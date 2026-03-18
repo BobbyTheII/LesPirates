@@ -1,6 +1,5 @@
 package cases;
 
-import java.util.Scanner;
 import jeu.*;
 
 public abstract class CaseSpeciale{
@@ -11,5 +10,5 @@ public abstract class CaseSpeciale{
 		this.numero = numero;
 	}
 	
-	public abstract void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de,Scanner sc);
+	public abstract void appliquerEffet(IAffichage affichage,Joueur joueur1,Joueur joueur2,De de);
 }

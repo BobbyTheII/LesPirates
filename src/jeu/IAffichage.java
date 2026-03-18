@@ -1,9 +1,9 @@
 package jeu;
 
 public interface IAffichage {
-	void choisirNom(String joueur);
+	String choisirNom(String joueur);
 	void afficherPirate(int indice,String nom);
-	void choisirPirate();
+	int choisirPirate();
 	void afficherCreationJoueur(String joueur,String pirate);
 	void afficherErreur();
 	void afficherCoeur(int nbrVie);
@@ -28,4 +28,5 @@ public interface IAffichage {
 	void afficherCaseTresor();
 	void afficherCaseVolcan();
 	void afficherCase(int numero);
+	void afficherNextLine();
 }
